@@ -486,6 +486,7 @@ static inline enum object_type object_type(unsigned int mode)
 #define GIT_NOGLOB_PATHSPECS_ENVIRONMENT "GIT_NOGLOB_PATHSPECS"
 #define GIT_ICASE_PATHSPECS_ENVIRONMENT "GIT_ICASE_PATHSPECS"
 #define GIT_QUARANTINE_ENVIRONMENT "GIT_QUARANTINE_PATH"
+#define GIT_OPTIONAL_LOCKS_ENVIRONMENT "GIT_OPTIONAL_LOCKS"
 
 /*
  * Environment variable used in handshaking the wire protocol.
@@ -836,6 +837,11 @@ extern const char *core_fsmonitor;
  * account.
  */
 extern int ref_paranoia;
+
+/*
+ * Returns the boolean value of $GIT_OPTIONAL_LOCKS (or the default value).
+ */
+int use_optional_locks(void);
 
 /*
  * The character that begins a commented line in user-editable file

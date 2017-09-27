@@ -159,6 +159,10 @@ foo.bar= ...`) sets `foo.bar` to the empty string which ` git config
 	Add "icase" magic to all pathspec. This is equivalent to setting
 	the `GIT_ICASE_PATHSPECS` environment variable to `1`.
 
+--no-optional-locks::
+	Do not perform optional operations that require locks. This is
+	equivalent to setting the `GIT_OPTIONAL_LOCKS` to `0`.
+
 GIT COMMANDS
 ------------
 
@@ -701,6 +705,14 @@ of clones and fetches.
 	For internal use only.  Used in handshaking the wire protocol.
 	Contains a colon ':' separated list of keys with optional values
 	'key[=value]'.  Presence of unknown keys must be tolerated.
+
+`GIT_OPTIONAL_LOCKS`::
+	If set to `0`, Git will complete any requested operation without
+	performing any optional sub-operations that require taking a lock.
+	For example, this will prevent `git status` from refreshing the
+	index as a side effect. This is useful for processes running in
+	the background which do not want to cause lock contention with
+	other operations on the repository.  Defaults to `1`.
 
 Discussion[[Discussion]]
 ------------------------
